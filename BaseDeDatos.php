@@ -5,14 +5,18 @@
     private $password;
 
     public function __contrsuct($DNS, $username, $password) {
-      try {
-        $db = new PDO(
-          $DNS,
-          $username,
-          $password
-        );
+      $this->DNS = $DNS;
+      $this->username = $username;
+      $this->password = $password;
+    }
 
-        return $db;
+    public function conectar() {
+      try {
+        $this = new PDO( //El $this de aquí no se si esta bien xD
+          $this->$DNS,
+          $this->$username,
+          $this->$password
+        );
       } catch (PDOexception $exception) {
         return $exception->getMessage();
       }
@@ -28,6 +32,30 @@
 
     public function prepare($sql) {
       $this->conexion->prepare($sql);
+    }
+
+    public function getDns() {
+      return $this->DNS;
+    }
+
+    public function getUsername() {
+      return $this->username;
+    }
+
+    public function getPassword() {
+      return $this->password;
+    }
+
+    public function setDns($DNS) {
+      $this->DNS = $DNS;
+    }
+
+    public function setUsername($username) {
+      $this->username = $username;
+    }
+
+    public function setPassword($password) {
+      $this->password = $password;
     }
   }
 ?>
