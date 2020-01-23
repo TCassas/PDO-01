@@ -8,7 +8,7 @@
   $username = "root";
   $password = "admin";
 
-  $query = $db->prepare("SELECT name, title FROM genres LEFT JOIN movies ON genres.id = genre_id WHERE genres.id = :id");
+  $query = $db->prepare("SELECT movies.id, name, title FROM genres LEFT JOIN movies ON genres.id = genre_id WHERE genres.id = :id");
 
   ?>
   <style>
@@ -21,6 +21,7 @@
     <tr>
       <th>Genero</th>
       <th>Pelicula</th>
+      <th>Eliminar</th>
     </tr>
     <?php for($i = 1; $i < 13; $i++) {
       $query->bindValue(":id", $i);
@@ -32,11 +33,13 @@
         <?php forEach($result as $pelicula) { ?>
           <tr>
             <td><?php if($pelicula['title'] == NULL) { echo "<em>No hay peliculas asociadas a este genero</em>"; } else { echo $pelicula['title'];}?></td>
+            <td><a href="eliminar.php/?id=<?= $pelicula['id'] ?>">x</a></td>
           </tr>
         <?php } ?>
       </tr>
     <?php } ?>
   </table>
+  <a href="movies.php">Volver a peliculas</a>
   <?php
 
   include_once("partials/footer.html");

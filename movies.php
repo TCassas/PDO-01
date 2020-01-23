@@ -4,10 +4,6 @@
   //Aquí se define la variable $db
   require("pdo.php");
 
-  //El valor de estas variables pueden variar dependiendo de la configuracion que se tenga
-  $username = "root";
-  $password = "admin";
-
   $query = $db->prepare("SELECT * FROM movies");
 
   $query->execute();
@@ -22,7 +18,8 @@
     </ul>
 
     <a href="agregarPelicula.php">Agregar una pelicula nueva</a><br>
-    <a href="buscador.php">Buscar una pelicula</a>
+    <a href="buscador.php">Buscar una pelicula</a><br>
+    <a href="generos.php">Listar generos y sus peliculas</a>
   <?php
 
   include_once("partials/footer.html");

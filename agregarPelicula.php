@@ -56,6 +56,7 @@
       </div>
   		<button type="submit">Guardar película</button>
   	</form>
+    <a href="movies.php">Volver a peliculas</a>
   </body>
 
   </html>

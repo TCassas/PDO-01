@@ -14,7 +14,9 @@
 
   $i = 1;
   forEach($result as $genero) {
-    ?> <option value="<?= $i ?>"> <?=$i . '- ' . $genero["name"] ?></option> <?php
+    ?>
+      <option value="<?= $i ?>"> <?=$i . '- ' . $genero["name"] ?></option>
+    <?php
     $i++;
   }
 ?>
