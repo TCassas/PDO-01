@@ -8,16 +8,17 @@
   $username = "root";
   $password = "admin";
 
-  $query = $db->prepare("SELECT * FROM series");
+  $query = $db->prepare("SELECT * FROM actors");
 
   $query->execute();
 
   $result = $query->fetchAll(PDO::FETCH_ASSOC);
 
   ?>
+    <h1>Actores:</h1>
     <ul>
-      <?php forEach($result as $serie) { ?>
-        <li><?= $serie["title"] ?>. <a href="info.php/?id=<?= $serie["id"] ?>">Ir</a></li>
+      <?php forEach($result as $actor) { ?>
+        <li><?= $actor["first_name"] ?> <?= $actor["last_name"] ?></li>
       <?php } ?>
     </ul>
   <?php
